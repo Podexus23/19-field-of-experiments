@@ -5,7 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <script src="main.js" defer></script>
-    <title>Old BK</title>
+    <title>Smth Test</title>
   </head>
-  <body></body>
+  <body>
+    <main class="main">
+      <section class="battlefield">
+        <div class="battlefield-fighters">
+          <div class="player">
+            <img
+              class="player-picture"
+              src="/assets/png/Player 1.png"
+              alt="face of insanity" />
+            <div class="player-moves">
+              <label for="head-1"
+                >Head<input type="radio" name="player-1" id="head-1"
+              /></label>
+              <label for="body-1"
+                >Body<input type="radio" name="player-1" id="body-1"
+              /></label>
+              <label for="legs-1"
+                >Legs<input type="radio" name="player-1" id="legs-1"
+              /></label>
+            </div>
+
+            <p class="player-health"><span>10</span>/<span>10</span></p>
+          </div>
+          <div class="player">
+            <img
+              class="player-picture"
+              src="/assets/png/Player 2.png"
+              alt="face of insanity" />
+            <div class="player-moves">
+              <label for="head-2"
+                >Head<input type="radio" name="player-2" id="head-2"
+              /></label>
+              <label for="body-2"
+                >Body<input type="radio" name="player-2" id="body-2"
+              /></label>
+              <label for="legs-2"
+                >Legs<input type="radio" name="player-2" id="legs-2"
+              /></label>
+            </div>
+            <p class="player-health"><span>10</span>/<span>10</span></p>
+          </div>
+        </div>
+        <button class="fight">Fight!</button>
+      </section>
+    </main>
+  </body>
 </html>
