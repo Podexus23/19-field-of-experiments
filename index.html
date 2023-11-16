@@ -10,46 +10,50 @@
   <body>
     <main class="main">
       <section class="battlefield">
-        <div class="battlefield-fighters">
-          <div class="player">
+        <form id="fighters-form" class="battlefield-fighters">
+          <fieldset class="fighters-player1 player">
+            <legend>Player 1</legend>
             <img
               class="player-picture"
               src="/assets/png/Player 1.png"
               alt="face of insanity" />
             <div class="player-moves">
               <label for="head-1"
-                >Head<input type="radio" name="player-1" id="head-1"
+                >Head<input type="radio" name="player-1" id="head-1" value="H"
               /></label>
               <label for="body-1"
-                >Body<input type="radio" name="player-1" id="body-1"
+                >Body<input type="radio" name="player-1" id="body-1" value="B"
               /></label>
               <label for="legs-1"
-                >Legs<input type="radio" name="player-1" id="legs-1"
+                >Legs<input type="radio" name="player-1" id="legs-1" value="L"
               /></label>
             </div>
 
             <p class="player-health"><span>10</span>/<span>10</span></p>
-          </div>
-          <div class="player">
+          </fieldset>
+          <fieldset class="fighters-player2 player">
+            <legend>Player 2</legend>
             <img
               class="player-picture"
               src="/assets/png/Player 2.png"
               alt="face of insanity" />
             <div class="player-moves">
               <label for="head-2"
-                >Head<input type="radio" name="player-2" id="head-2"
+                >Head<input type="radio" name="player-2" id="head-2" value="H"
               /></label>
               <label for="body-2"
-                >Body<input type="radio" name="player-2" id="body-2"
+                >Body<input type="radio" name="player-2" id="body-2" value="B"
               /></label>
               <label for="legs-2"
-                >Legs<input type="radio" name="player-2" id="legs-2"
+                >Legs<input type="radio" name="player-2" id="legs-2" value="L"
               /></label>
             </div>
             <p class="player-health"><span>10</span>/<span>10</span></p>
-          </div>
-        </div>
-        <button class="fight">Fight!</button>
+          </fieldset>
+        </form>
+        <button class="fight-btn" type="submit" form="fighters-form">
+          Hug!
+        </button>
       </section>
     </main>
   </body>
