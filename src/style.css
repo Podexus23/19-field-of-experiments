@@ -1,20 +1,6 @@
-*,
-*:after,
-*:before {
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0;
-}
-
-html {
-  font-size: 62.5%;
-}
-
-body {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 .main {
   background-color: rgba(0, 0, 0, 0.3);
