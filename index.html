@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Hug fight game" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+    <title>Hug Fight!</title>
+  </head>
+  <body>
+    <main class="main">
+      <section class="battlefield">
+        <div class="battlefield-announcement"></div>
+        <form id="fighters-form" class="battlefield-fighters">
+          <fieldset class="fighters-player1 player">
+            <legend>Player 1</legend>
+            <img
+              class="player-picture"
+              src="/assets/png/Player 1.png"
+              alt="face of insanity" />
+            <div class="player-moves">
+              <label for="head-1"
+                >Head<input type="radio" name="player-1" id="head-1" value="H"
+              /></label>
+              <label for="body-1"
+                >Body<input type="radio" name="player-1" id="body-1" value="B"
+              /></label>
+              <label for="legs-1"
+                >Legs<input type="radio" name="player-1" id="legs-1" value="L"
+              /></label>
+            </div>
+
+            <p class="player-health">
+              <span>10</span>/<span class="player-1__health">10</span>
+            </p>
+          </fieldset>
+          <fieldset class="fighters-player2 player">
+            <legend>Player 2</legend>
+            <img
+              class="player-picture"
+              src="/assets/png/Player 2.png"
+              alt="face of insanity" />
+            <div class="player-moves">
+              <label for="head-2"
+                >Head<input type="radio" name="player-2" id="head-2" value="H"
+              /></label>
+              <label for="body-2"
+                >Body<input type="radio" name="player-2" id="body-2" value="B"
+              /></label>
+              <label for="legs-2"
+                >Legs<input type="radio" name="player-2" id="legs-2" value="L"
+              /></label>
+            </div>
+            <p class="player-health">
+              <span>10</span>/<span class="player-2__health">10</span>
+            </p>
+          </fieldset>
+        </form>
+        <button class="fight-btn" type="submit" form="fighters-form" disabled>
+          Hug!
+        </button>
+      </section>
+    </main>
+  </body>
+</html>
