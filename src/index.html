@@ -8,56 +8,120 @@
     <script src="main.js" defer></script>
     <title>Hug Fight!</title>
   </head>
-  <body>
-    <main class="main">
-      <section class="battlefield">
-        <div class="battlefield-announcement"></div>
-        <form id="fighters-form" class="battlefield-fighters">
-          <fieldset class="fighters-player1 player">
-            <legend>Player 1</legend>
+  <body class="font-sans flex flex-col items-center bg-lime-700">
+    <main class="main flex w-auto h-auto">
+      <section class="battlefield flex flex-col">
+        <p class="battlefield-announcement text-center">asdasd</p>
+        <form id="fighters-form" class="battlefield-fighters flex gap-10">
+          <div class="fighters-player1 text-center">
+            <h3>Player 1</h3>
             <img
               class="player-picture"
               src="/assets/png/Player 1.png"
               alt="face of insanity" />
-            <div class="player-moves">
-              <label for="head-1"
-                >Head<input type="radio" name="player-1" id="head-1" value="H"
-              /></label>
-              <label for="body-1"
-                >Body<input type="radio" name="player-1" id="body-1" value="B"
-              /></label>
-              <label for="legs-1"
-                >Legs<input type="radio" name="player-1" id="legs-1" value="L"
-              /></label>
+            <div class="flex flex-col">
+              <div class="hover:bg-teal-500 w-full transition-colors">
+                <input
+                  type="radio"
+                  class="ml-2 peer hidden"
+                  name="player-1"
+                  id="head-1"
+                  value="H" />
+                <label
+                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  for="head-1"
+                  >Head</label
+                >
+              </div>
+              <div class="hover:bg-teal-500 w-full transition-colors">
+                <input
+                  type="radio"
+                  class="ml-2 peer hidden"
+                  name="player-1"
+                  id="body-1"
+                  value="H" />
+                <label
+                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  for="body-1"
+                  >Body</label
+                >
+              </div>
+              <div class="hover:bg-teal-500 w-full transition-colors">
+                <input
+                  type="radio"
+                  class="ml-2 peer hidden"
+                  name="player-1"
+                  id="legs-1"
+                  value="H" />
+                <label
+                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  for="legs-1"
+                  >legs</label
+                >
+              </div>
             </div>
 
             <p class="player-health">
               <span>10</span>/<span class="player-1__health">10</span>
             </p>
-          </fieldset>
-          <fieldset class="fighters-player2 player">
-            <legend>Player 2</legend>
+          </div>
+          <div class="fighters-player2 text-center">
+            <h3>Player 2</h3>
             <img
               class="player-picture"
               src="/assets/png/Player 2.png"
               alt="face of insanity" />
-            <div class="player-moves">
-              <label for="head-2"
-                >Head<input type="radio" name="player-2" id="head-2" value="H"
-              /></label>
-              <label for="body-2"
-                >Body<input type="radio" name="player-2" id="body-2" value="B"
-              /></label>
-              <label for="legs-2"
-                >Legs<input type="radio" name="player-2" id="legs-2" value="L"
-              /></label>
+            <div class="flex flex-col">
+              <div class="hover:bg-teal-500 w-full transition-colors">
+                <input
+                  type="radio"
+                  class="ml-2 peer hidden"
+                  name="player-2"
+                  id="head-2"
+                  value="H" />
+                <label
+                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  for="head-2"
+                  >Head</label
+                >
+              </div>
+              <div class="hover:bg-teal-500 w-full transition-colors">
+                <input
+                  type="radio"
+                  class="ml-2 peer hidden"
+                  name="player-2"
+                  id="body-2"
+                  value="H" />
+                <label
+                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  for="body-2"
+                  >Body</label
+                >
+              </div>
+              <div class="hover:bg-teal-500 w-full transition-colors">
+                <input
+                  type="radio"
+                  class="ml-2 peer hidden"
+                  name="player-2"
+                  id="legs-2"
+                  value="H" />
+                <label
+                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  for="legs-2"
+                  >legs</label
+                >
+              </div>
             </div>
             <p class="player-health">
               <span>10</span>/<span class="player-2__health">10</span>
             </p>
-          </fieldset>
+          </div>
         </form>
-        <button class="fight-btn" type="submit" form="fighters-form" disabled>
+        <button
+          class="fight-btn disabled:bg-zinc-500 p-2 bg-blue-300 hover:bg-slate-600 cursor-pointer transition-colors"
+          type="submit"
+          form="fighters-form"
+          disabled>
           Hug!
         </button>
       </section>
