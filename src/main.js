@@ -11,8 +11,19 @@ const fullBodyOne = Array.from(
 const fullBodyTwo = Array.from(
   playerTwo.querySelectorAll(`input[type = "radio"]`),
 );
+const botFightBtn = document.querySelector(".fight-vs-bot-btn");
+
+const playerVsPlayerGameFlow = (e) => {
+  const partOne = fullBodyOne.filter((part) => part.checked)[0]?.value;
+  const partTwo = fullBodyTwo.filter((part) => part.checked)[0]?.value;
+  if (partOne && partTwo) hugButton.disabled = false;
+};
+
+form.addEventListener("change", playerVsPlayerGameFlow);
 
 let fighters = [];
+
+const fightStatus = {};
 
 const createNewFighter = function (name = "fighter", stats) {
   return {
@@ -36,8 +47,8 @@ const nextStart = () => {
 window.addEventListener("load", nextStart);
 
 //max hit, min hit, modifier(use later)
-const hitNumbers = [0, 30, 1]; // for now =)
-const hitNumbers2 = [2, 4, 2]; // for now =)
+const hitNumbers = [25, 50, 1]; // for now =)
+// const hitNumbers2 = [2, 4, 2]; // for now =)
 
 const hitForceCount = (min, max, modifier) => {
   const base = min + Math.random() * (max - min) * modifier;
@@ -61,6 +72,8 @@ const activateEndGame = () => {
 
 const hitLogger = () => {
   const logWindow = document.querySelector(".battle-log");
+  if (logWindow.classList.contains("hidden"))
+    logWindow.classList.remove("hidden");
   const {
     name: name1,
     maxHealth: maxHp1,
@@ -73,6 +86,7 @@ const hitLogger = () => {
     health: hp2,
     lastTakenDamage: dmgTaken2,
   } = fighters[1];
+
   const firstFighterLog = `<div class="text-sm leading-3">
     <span class="font-bold text-green-700">${name1} (${hp1}/${maxHp1}):</span>
     <span>-${dmgTaken1}</span>
@@ -83,21 +97,13 @@ const hitLogger = () => {
   <span>-${dmgTaken2}</span>
   </div>
   `;
+
   const oneRoundMsg = `<div class="p-1 pb-0">${secondFighterLog}${firstFighterLog}</div>`;
   logWindow.insertAdjacentHTML("beforeend", oneRoundMsg);
-
-  console.log(logWindow.scrollTop);
-  console.dir(logWindow);
   logWindow.scrollTop = logWindow.scrollHeight - logWindow.clientHeight;
 };
 
 const handleFightMove = function () {
-  form.addEventListener("change", (e) => {
-    const partOne = fullBodyOne.filter((part) => part.checked)[0]?.value;
-    const partTwo = fullBodyTwo.filter((part) => part.checked)[0]?.value;
-    if (partOne && partTwo) hugButton.disabled = false;
-  });
-
   const fightMoveHandler = (e) => {
     e.preventDefault();
     //count damage
@@ -148,3 +154,13 @@ let init = function () {
 };
 
 init();
+
+botFightBtn.addEventListener("click", () => {
+  console.log("hi, bot btn");
+  fightStatus.type = "pve";
+  const p2Controls = document.querySelector(".p2-controls");
+  p2Controls.classList.add("hidden");
+  //turn off pvp gameflow
+  form.removeEventListener("change", playerVsPlayerGameFlow);
+  form.addEventListener("change", playerVsBotGameFlow);
+});
