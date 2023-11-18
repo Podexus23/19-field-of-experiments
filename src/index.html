@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,123 +8,138 @@
     <script src="main.js" defer></script>
     <title>Hug Fight!</title>
   </head>
-  <body class="font-sans flex flex-col items-center bg-lime-700">
-    <main class="main flex w-auto h-auto">
+  <body class="flex flex-col items-center bg-lime-700 font-sans">
+    <main class="main flex h-auto w-auto flex-col">
       <section class="battlefield flex flex-col">
-        <p class="battlefield-announcement text-center">asdasd</p>
+        <p class="battlefield-announcement text-center">Let's begin</p>
         <form id="fighters-form" class="battlefield-fighters flex gap-10">
           <div class="fighters-player1 text-center">
             <h3>Player 1</h3>
             <img
-              class="player-picture"
+              class="player-picture h-60"
               src="/assets/png/Player 1.png"
-              alt="face of insanity" />
+              alt="face of insanity"
+            />
             <div class="flex flex-col">
-              <div class="hover:bg-teal-500 w-full transition-colors">
+              <div class="w-full transition-colors hover:bg-teal-500">
                 <input
                   type="radio"
-                  class="ml-2 peer hidden"
+                  class="peer ml-2 hidden"
                   name="player-1"
                   id="head-1"
-                  value="H" />
+                  value="H"
+                />
                 <label
-                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
                   for="head-1"
                   >Head</label
                 >
               </div>
-              <div class="hover:bg-teal-500 w-full transition-colors">
+              <div class="w-full transition-colors hover:bg-teal-500">
                 <input
                   type="radio"
-                  class="ml-2 peer hidden"
+                  class="peer ml-2 hidden"
                   name="player-1"
                   id="body-1"
-                  value="H" />
+                  value="H"
+                />
                 <label
-                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
                   for="body-1"
                   >Body</label
                 >
               </div>
-              <div class="hover:bg-teal-500 w-full transition-colors">
+              <div class="w-full transition-colors hover:bg-teal-500">
                 <input
                   type="radio"
-                  class="ml-2 peer hidden"
+                  class="peer ml-2 hidden"
                   name="player-1"
                   id="legs-1"
-                  value="H" />
+                  value="H"
+                />
                 <label
-                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
                   for="legs-1"
                   >legs</label
                 >
               </div>
             </div>
-
             <p class="player-health">
-              <span>10</span>/<span class="player-1__health">10</span>
+              <span class="health-is">10</span>/<span class="health-max"
+                >10</span
+              >
             </p>
           </div>
           <div class="fighters-player2 text-center">
             <h3>Player 2</h3>
             <img
-              class="player-picture"
+              class="player-picture h-60"
               src="/assets/png/Player 2.png"
-              alt="face of insanity" />
+              alt="face of insanity"
+            />
             <div class="flex flex-col">
-              <div class="hover:bg-teal-500 w-full transition-colors">
+              <div class="w-full transition-colors hover:bg-teal-500">
                 <input
                   type="radio"
-                  class="ml-2 peer hidden"
+                  class="peer ml-2 hidden"
                   name="player-2"
                   id="head-2"
-                  value="H" />
+                  value="H"
+                />
                 <label
-                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
                   for="head-2"
                   >Head</label
                 >
               </div>
-              <div class="hover:bg-teal-500 w-full transition-colors">
+              <div class="w-full transition-colors hover:bg-teal-500">
                 <input
                   type="radio"
-                  class="ml-2 peer hidden"
+                  class="peer ml-2 hidden"
                   name="player-2"
                   id="body-2"
-                  value="H" />
+                  value="H"
+                />
                 <label
-                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
                   for="body-2"
                   >Body</label
                 >
               </div>
-              <div class="hover:bg-teal-500 w-full transition-colors">
+              <div class="w-full transition-colors hover:bg-teal-500">
                 <input
                   type="radio"
-                  class="ml-2 peer hidden"
+                  class="peer ml-2 hidden"
                   name="player-2"
                   id="legs-2"
-                  value="H" />
+                  value="H"
+                />
                 <label
-                  class="peer-checked:bg-red-500 cursor-pointer w-full inline-block transition-colors"
+                  class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
                   for="legs-2"
                   >legs</label
                 >
               </div>
             </div>
             <p class="player-health">
-              <span>10</span>/<span class="player-2__health">10</span>
+              <span class="health-is">10</span>/<span class="health-max"
+                >10</span
+              >
             </p>
           </div>
         </form>
         <button
-          class="fight-btn disabled:bg-zinc-500 p-2 bg-blue-300 hover:bg-slate-600 cursor-pointer transition-colors"
+          class="fight-btn cursor-pointer bg-blue-300 p-2 transition-colors hover:bg-slate-600 disabled:bg-zinc-500"
           type="submit"
           form="fighters-form"
-          disabled>
+          disabled
+        >
           Hug!
         </button>
       </section>
+      <section
+        class="battle-log mt-2 h-28 max-w-xl overflow-y-scroll bg-slate-50"
+      ></section>
     </main>
   </body>
 </html>
