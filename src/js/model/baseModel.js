@@ -22,8 +22,11 @@ export const gameState = {
 
 const hitForceCount = (min, max, modifier = 1) => {
   const base = min + Math.random() * (max - min) * modifier;
-  const modifiedBase = base;
-  return Math.ceil(modifiedBase);
+  return Math.ceil(base);
+};
+//simulate bot's chose for move by giving index of input
+export const moveSimulation = (min, max) => {
+  return Math.floor(min + Math.random() * (max - min));
 };
 
 export const fightState = {
@@ -55,8 +58,22 @@ export const endGameCheck = () => {
 export const preparePvpModel = () => {
   gameState.type = "pvp";
   gameState.stage = "ingame";
-  fightState.fighters.push(createNewFighter("player"));
-  fightState.fighters.push(createNewFighter("player"));
+  fightState.fighters.push(createNewFighter("player, fighter 1"));
+  fightState.fighters.push(createNewFighter("player, fighter 2"));
+};
+
+export const preparePveModel = () => {
+  gameState.type = "pve";
+  gameState.stage = "ingame";
+  fightState.fighters.push(createNewFighter("player, fighter 1"));
+  fightState.fighters.push(createNewFighter("bot, Bot 1"));
+};
+
+export const prepareEveModel = () => {
+  gameState.type = "eve";
+  gameState.stage = "ingame";
+  fightState.fighters.push(createNewFighter("bot, Bot 1"));
+  fightState.fighters.push(createNewFighter("bot, Bot 2"));
 };
 
 export const countDamage = () => {

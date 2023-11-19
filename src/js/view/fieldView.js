@@ -11,15 +11,70 @@ export const preparePvpView = (field, state) => {
   playerOneHealth.querySelector(".health-is").textContent =
     state.fighters[0].health;
   playerOneHealth.querySelector(".health-max").textContent =
-    state.fighters[0].health;
+    state.fighters[0].maxHealth;
   playerTwoHealth.querySelector(".health-is").textContent =
     state.fighters[1].health;
   playerTwoHealth.querySelector(".health-max").textContent =
-    state.fighters[1].health;
+    state.fighters[1].maxHealth;
+
+  field.querySelector(".p2-controls").classList.remove("hidden");
 
   announcePlace.textContent = `Let's Begin`;
   hugButton.textContent = "Hug!";
   hugButton.disabled = true;
+};
+
+export const preparePveView = (field, state) => {
+  const announcePlace = document.querySelector(".battlefield-announcement");
+  const hugButton = field.querySelector(".fight-btn");
+  const playerOneHealth = field.querySelector(
+    ".fighters-player1 .player-health",
+  );
+  const playerTwoHealth = field.querySelector(
+    ".fighters-player2 .player-health",
+  );
+
+  playerOneHealth.querySelector(".health-is").textContent =
+    state.fighters[0].health;
+  playerOneHealth.querySelector(".health-max").textContent =
+    state.fighters[0].maxHealth;
+  playerTwoHealth.querySelector(".health-is").textContent =
+    state.fighters[1].health;
+  playerTwoHealth.querySelector(".health-max").textContent =
+    state.fighters[1].maxHealth;
+
+  field.querySelector(".p2-controls").classList.add("hidden");
+
+  announcePlace.textContent = `Let's Begin`;
+  hugButton.textContent = "Hug!";
+  hugButton.disabled = true;
+};
+
+export const prepareEveView = (field, state) => {
+  const announcePlace = document.querySelector(".battlefield-announcement");
+  const hugButton = field.querySelector(".fight-btn");
+  const playerOneHealth = field.querySelector(
+    ".fighters-player1 .player-health",
+  );
+  const playerTwoHealth = field.querySelector(
+    ".fighters-player2 .player-health",
+  );
+
+  playerOneHealth.querySelector(".health-is").textContent =
+    state.fighters[0].health;
+  playerOneHealth.querySelector(".health-max").textContent =
+    state.fighters[0].maxHealth;
+  playerTwoHealth.querySelector(".health-is").textContent =
+    state.fighters[1].health;
+  playerTwoHealth.querySelector(".health-max").textContent =
+    state.fighters[1].maxHealth;
+
+  field.querySelector(".p1-controls").classList.add("hidden");
+  field.querySelector(".p2-controls").classList.add("hidden");
+
+  announcePlace.textContent = `Let's Begin`;
+  hugButton.textContent = "Hug!";
+  hugButton.disabled = false;
 };
 
 export const enableHugBtn = () => {

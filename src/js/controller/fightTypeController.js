@@ -1,32 +1,60 @@
 import * as baseModel from "../model/baseModel.js";
 import * as asideView from "../view/asideView.js";
 import * as fieldView from "../view/fieldView.js";
-import pvpFieldController from "./pvpFieldController.js";
+import pvpController from "./pvpFieldController.js";
+import pveController from "./pveFieldController.js";
+import eveController from "./eveFieldController.js";
 
 const asideBlock = document.querySelector(".aside");
 const battleField = document.querySelector(".battlefield");
 
+const eventsToRemove = [];
+
 const startPvPFight = () => {
+  //clean after previous games
+  baseModel.cleanStats();
   baseModel.preparePvpModel();
   fieldView.preparePvpView(battleField, baseModel.fightState);
-  pvpFieldController(battleField, baseModel, fieldView);
+  const { runGame, cleanPvpListeners } = pvpController(
+    battleField,
+    baseModel,
+    fieldView,
+  );
+  eventsToRemove.push(cleanPvpListeners);
+  runGame();
 };
+
 const startPvEFight = () => {
-  console.log(`i'm doing my part as PvE`);
-  //as default on loading screen
-  //say to model that we loading PvE
-  //say to view that we loading PvE
+  baseModel.cleanStats();
+  baseModel.preparePveModel();
+  fieldView.preparePveView(battleField, baseModel.fightState);
+  const { runGame, cleanPveListeners } = pveController(
+    battleField,
+    baseModel,
+    fieldView,
+  );
+  eventsToRemove.push(cleanPveListeners);
+  runGame();
 };
+
 const startEvEFight = () => {
-  console.log(`i'm doing my part as EvE`);
-  //as default on loading screen
-  //say to model that we loading EvE
-  //say to view that we loading EvE
+  baseModel.cleanStats();
+  baseModel.prepareEveModel();
+  fieldView.prepareEveView(battleField, baseModel.fightState);
+  const { runGame, cleanEveListeners } = eveController(
+    battleField,
+    baseModel,
+    fieldView,
+  );
+  eventsToRemove.push(cleanEveListeners);
+  runGame();
 };
 
 asideBlock.addEventListener("click", (e) => {
   if (!e.target.closest(".game-type-btn")) return;
   if (e.target.classList.contains("active")) return;
+
+  if (eventsToRemove.length) eventsToRemove.forEach((remover) => remover());
 
   if (e.target.classList.contains("player-vs-player-btn")) {
     asideView.makeActiveBtn(e.target);
