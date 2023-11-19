@@ -1,3 +1,5 @@
+import * as hitLogger from "../view/loggerView.js";
+
 export default function (field, model, view) {
   const form = field.querySelector("#fighters-form");
   const hugButton = field.querySelector(".fight-btn");
@@ -18,19 +20,21 @@ export default function (field, model, view) {
   const makeMoveCycle = () => {
     model.countDamage();
     view.updateHp(model.fightState.fighters);
+    hitLogger.logger(model.fightState);
     if (model.endGameCheck()) {
       view.prepareEndOfTheGame(field, model.gameState);
     } else view.prepareNextMove(field);
   };
 
+  //! find a place to remove handlers
   form.addEventListener("change", checkPlayerMoves);
   field.addEventListener("click", (e) => {
-    // e.preventDefault();
     if (e.target === hugButton && model.gameState.stage === "ingame") {
       e.preventDefault();
       makeMoveCycle();
     } else if (e.target === hugButton && model.gameState.stage === "ended") {
       e.preventDefault();
+      hitLogger.cleanLogger();
       model.cleanStats();
       model.preparePvpModel();
       view.preparePvpView(field, model.fightState);

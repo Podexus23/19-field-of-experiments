@@ -1,19 +1,20 @@
-const hitLogger = () => {
+export function logger(fightState) {
   const logWindow = document.querySelector(".battle-log");
   if (logWindow.classList.contains("hidden"))
     logWindow.classList.remove("hidden");
+
   const {
     name: name1,
     maxHealth: maxHp1,
     health: hp1,
     lastTakenDamage: dmgTaken1,
-  } = fighters[0];
+  } = fightState.fighters[0];
   const {
     name: name2,
     maxHealth: maxHp2,
     health: hp2,
     lastTakenDamage: dmgTaken2,
-  } = fighters[1];
+  } = fightState.fighters[1];
 
   const firstFighterLog = `<div class="text-sm leading-3">
     <span class="font-bold text-green-700">${name1} (${hp1}/${maxHp1}):</span>
@@ -29,4 +30,12 @@ const hitLogger = () => {
   const oneRoundMsg = `<div class="p-1 pb-0">${secondFighterLog}${firstFighterLog}</div>`;
   logWindow.insertAdjacentHTML("beforeend", oneRoundMsg);
   logWindow.scrollTop = logWindow.scrollHeight - logWindow.clientHeight;
-};
+}
+
+export function cleanLogger() {
+  const logWindow = document.querySelector(".battle-log");
+  logWindow.classList.add("hidden");
+  while (logWindow.childNodes.length !== 0) {
+    logWindow.removeChild(logWindow.firstChild);
+  }
+}

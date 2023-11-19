@@ -1,8 +1,6 @@
 import * as baseModel from "../model/baseModel.js";
 import * as asideView from "../view/asideView.js";
 import * as fieldView from "../view/fieldView.js";
-
-import "../view/fieldView.js";
 import pvpFieldController from "./pvpFieldController.js";
 
 const asideBlock = document.querySelector(".aside");
@@ -12,10 +10,6 @@ const startPvPFight = () => {
   baseModel.preparePvpModel();
   fieldView.preparePvpView(battleField, baseModel.fightState);
   pvpFieldController(battleField, baseModel, fieldView);
-  // pvpFightView();
-  //as default on loading screen
-  //say to model that we loading PvP
-  //say to view that we loading PvP
 };
 const startPvEFight = () => {
   console.log(`i'm doing my part as PvE`);
@@ -38,7 +32,6 @@ asideBlock.addEventListener("click", (e) => {
     asideView.makeActiveBtn(e.target);
     startPvPFight();
   }
-
   if (e.target.classList.contains("player-vs-bot-btn")) {
     asideView.makeActiveBtn(e.target);
     startPvEFight();
