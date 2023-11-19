@@ -1,3 +1,5 @@
+import "./js/controller/fightTypeController.js";
+
 const hugButton = document.querySelector(".fight-btn");
 const announcementPlace = document.querySelector(".battlefield-announcement");
 const form = document.forms.namedItem("fighters-form");
@@ -155,12 +157,12 @@ let init = function () {
 
 init();
 
-botFightBtn.addEventListener("click", () => {
-  console.log("hi, bot btn");
-  fightStatus.type = "pve";
-  const p2Controls = document.querySelector(".p2-controls");
-  p2Controls.classList.add("hidden");
-  //turn off pvp gameflow
-  form.removeEventListener("change", playerVsPlayerGameFlow);
-  form.addEventListener("change", playerVsBotGameFlow);
-});
+// botFightBtn.addEventListener("click", () => {
+//   console.log("hi, bot btn");
+//   fightStatus.type = "pve";
+//   const p2Controls = document.querySelector(".p2-controls");
+//   p2Controls.classList.add("hidden");
+//   //turn off pvp gameflow
+//   form.removeEventListener("change", playerVsPlayerGameFlow);
+//   form.addEventListener("change", playerVsBotGameFlow);
+// });

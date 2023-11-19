@@ -5,16 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Hug fight game" />
     <link rel="stylesheet" href="output.css" />
-    <script src="main.js" defer></script>
+    <script src="main.js" defer type="module"></script>
     <title>Hug Fight!</title>
   </head>
   <body class="grid bg-lime-700 font-sans">
-    <aside class="flex flex-col items-center gap-2 bg-fuchsia-500">
-      <h4 class="font-medium">hello, i'm aside with buttons</h4>
+    <aside class="aside flex flex-col items-center gap-2 bg-fuchsia-500 pt-4">
       <button
-        class="fight-vs-bot-btn rounded-lg border-2 border-solid border-fuchsia-300 bg-yellow-400 p-2 pb-1 pt-1 text-gray-800 transition-colors hover:border-fuchsia-700 hover:bg-yellow-200"
+        class="game-type-btn player-vs-player-btn rounded-lg border-2 border-solid border-fuchsia-300 bg-yellow-400 p-2 pb-1 pt-1 text-gray-800 transition-colors hover:border-fuchsia-700 hover:bg-yellow-200 active:bg-green-300 [&.active]:bg-green-300"
       >
-        Fight vs with bot
+        Player vs Player
+      </button>
+      <button
+        class="game-type-btn player-vs-bot-btn rounded-lg border-2 border-solid border-fuchsia-300 bg-yellow-400 p-2 pb-1 pt-1 text-gray-800 transition-colors hover:border-fuchsia-700 hover:bg-yellow-200 active:bg-green-300 [&.active]:bg-green-300"
+      >
+        Player vs Bot
+      </button>
+      <button
+        class="game-type-btn bot-vs-bot-btn rounded-lg border-2 border-solid border-fuchsia-300 bg-yellow-400 p-2 pb-1 pt-1 text-gray-800 transition-colors hover:border-fuchsia-700 hover:bg-yellow-200 active:bg-green-300 [&.active]:bg-green-300"
+      >
+        Bot vs Bot
       </button>
     </aside>
     <main class="main flex h-auto w-auto flex-col items-center">

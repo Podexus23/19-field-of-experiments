@@ -3,6 +3,7 @@
   "description": "here i'm trying to use every technology and knowlege i learnt from internet",
   "version": "1.0.0",
   "main": "main.js",
+  "type": "module",
   "scripts": {
     "tailwind: watch": "npx tailwindcss -i ./src/style.css -o ./src/output.css --watch"
   },
