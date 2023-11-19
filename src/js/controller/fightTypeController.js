@@ -9,8 +9,8 @@ const asideBlock = document.querySelector(".aside");
 const battleField = document.querySelector(".battlefield");
 
 const startPvPFight = () => {
-  console.log(`i'm doing my part as PvP controller`);
-  baseModel.preparePVPFight();
+  baseModel.preparePvpModel();
+  fieldView.preparePvpView(battleField, baseModel.fightState);
   pvpFieldController(battleField, baseModel, fieldView);
   // pvpFightView();
   //as default on loading screen
