@@ -17,6 +17,7 @@ export const preparePvpView = (field, state) => {
   playerTwoHealth.querySelector(".health-max").textContent =
     state.fighters[1].maxHealth;
 
+  field.querySelector(".p1-controls").classList.remove("hidden");
   field.querySelector(".p2-controls").classList.remove("hidden");
 
   announcePlace.textContent = `Let's Begin`;
@@ -43,6 +44,7 @@ export const preparePveView = (field, state) => {
   playerTwoHealth.querySelector(".health-max").textContent =
     state.fighters[1].maxHealth;
 
+  field.querySelector(".p1-controls").classList.remove("hidden");
   field.querySelector(".p2-controls").classList.add("hidden");
 
   announcePlace.textContent = `Let's Begin`;
