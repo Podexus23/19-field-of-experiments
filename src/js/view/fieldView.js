@@ -1,3 +1,34 @@
+const generateBattlefield = function () {
+  const battlefield = document.createElement("section");
+  battlefield.classList.add("battlefield", "flex", "flex-col");
+
+  const p = document.createElement("p");
+  p.classList.add("battlefield-announcement", "text-center");
+  p.textContent = "Let's begin";
+  battlefield.insertAdjacentElement("afterbegin", p);
+
+  const button = document.createElement("button");
+  button.classList.add(
+    "fight-btn",
+    "cursor-pointer",
+    "bg-blue-300",
+    "p-2",
+    "transition-colors",
+    "hover:bg-slate-600",
+    "disabled:bg-zinc-500",
+  );
+  button.setAttribute("type", "submit");
+  button.setAttribute("form", "fighters-form");
+  button.textContent = "Hug!";
+
+  battlefield.insertAdjacentElement("beforeend", button);
+
+  document.querySelector("main").append(battlefield);
+  return battlefield;
+};
+
+console.log(generateBattlefield());
+
 export const preparePvpView = (field, state) => {
   const announcePlace = document.querySelector(".battlefield-announcement");
   const hugButton = field.querySelector(".fight-btn");
