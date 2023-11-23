@@ -14,7 +14,7 @@ const startPvPFight = () => {
   //clean after previous games
   baseModel.cleanStats();
   baseModel.preparePvpModel();
-  fieldView.preparePvpView(battleField, baseModel.fightState);
+  const battlefield = fieldView.preparePvpView(baseModel.fightState.fighters);
   const { runGame, cleanPvpListeners } = pvpController(
     battleField,
     baseModel,
@@ -27,7 +27,7 @@ const startPvPFight = () => {
 const startPvEFight = () => {
   baseModel.cleanStats();
   baseModel.preparePveModel();
-  fieldView.preparePveView(battleField, baseModel.fightState);
+  fieldView.preparePveView(battleField, baseModel.fightState.fighters);
   const { runGame, cleanPveListeners } = pveController(
     battleField,
     baseModel,
