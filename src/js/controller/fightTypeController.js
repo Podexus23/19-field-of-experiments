@@ -15,13 +15,13 @@ const startPvPFight = () => {
   baseModel.cleanStats();
   baseModel.preparePvpModel();
   const battlefield = fieldView.preparePvpView(baseModel.fightState.fighters);
-  const { runGame, cleanPvpListeners } = pvpController(
-    battleField,
+  pvpController(
+    battlefield,
     baseModel,
     fieldView,
+    eventsToRemove,
+    startPvPFight,
   );
-  eventsToRemove.push(cleanPvpListeners);
-  runGame();
 };
 
 const startPvEFight = () => {
@@ -57,6 +57,7 @@ asideBlock.addEventListener("click", (e) => {
   if (eventsToRemove.length) eventsToRemove.forEach((remover) => remover());
 
   if (e.target.classList.contains("player-vs-player-btn")) {
+    console.log("hi");
     asideView.makeActiveBtn(e.target);
     startPvPFight();
   }

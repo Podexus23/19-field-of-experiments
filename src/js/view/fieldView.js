@@ -24,6 +24,7 @@ const createBattlefield = function () {
   );
   button.setAttribute("type", "submit");
   button.setAttribute("form", "fighters-form");
+  button.disabled = true;
   button.textContent = "Hug!";
 
   battlefield.insertAdjacentElement("beforeend", button);
@@ -194,4 +195,8 @@ export const prepareEndOfTheGame = (field, state) => {
     announcePlace.textContent = `Winner is player №${state.winner}`;
     hugButton.textContent = "restart";
   }
+};
+
+export const removeField = (field) => {
+  document.querySelector("main").removeChild(field);
 };
