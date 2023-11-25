@@ -27,14 +27,14 @@ const startPvPFight = () => {
 const startPvEFight = () => {
   baseModel.cleanStats();
   baseModel.preparePveModel();
-  fieldView.preparePveView(battleField, baseModel.fightState.fighters);
-  const { runGame, cleanPveListeners } = pveController(
-    battleField,
+  const battlefield = fieldView.preparePveView(baseModel.fightState.fighters);
+  pveController(
+    battlefield,
     baseModel,
     fieldView,
+    eventsToRemove,
+    startPvEFight,
   );
-  eventsToRemove.push(cleanPveListeners);
-  runGame();
 };
 
 const startEvEFight = () => {

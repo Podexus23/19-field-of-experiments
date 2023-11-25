@@ -58,22 +58,22 @@ export const endGameCheck = () => {
 export const preparePvpModel = () => {
   gameState.type = "pvp";
   gameState.stage = "ingame";
-  fightState.fighters.push(createNewFighter("player, fighter 1"));
-  fightState.fighters.push(createNewFighter("player, fighter 2"));
+  fightState.fighters.push(createNewFighter("player", "fighter 1"));
+  fightState.fighters.push(createNewFighter("player", "fighter 2"));
 };
 
 export const preparePveModel = () => {
   gameState.type = "pve";
   gameState.stage = "ingame";
-  fightState.fighters.push(createNewFighter("player, fighter 1"));
-  fightState.fighters.push(createNewFighter("bot, Bot 1"));
+  fightState.fighters.push(createNewFighter("player", "fighter 1"));
+  fightState.fighters.push(createNewFighter("bot", "Bot 1"));
 };
 
 export const prepareEveModel = () => {
   gameState.type = "eve";
   gameState.stage = "ingame";
-  fightState.fighters.push(createNewFighter("bot, Bot 1"));
-  fightState.fighters.push(createNewFighter("bot, Bot 2"));
+  fightState.fighters.push(createNewFighter("bot", "Bot 1"));
+  fightState.fighters.push(createNewFighter("bot", "Bot 2"));
 };
 
 export const countDamage = () => {

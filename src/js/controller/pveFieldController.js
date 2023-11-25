@@ -1,22 +1,28 @@
 import * as hitLogger from "../view/loggerView.js";
 
-export default function (field, model, view) {
-  const form = field.querySelector("#fighters-form");
-  const hugButton = field.querySelector(".fight-btn");
-
-  const allPartsP1 = Array.from(
-    form.querySelectorAll(`.fighters-player1 input[type="radio"]`),
-  );
-
-  /*for now damage counter is completely fake,
-   * so it does'n matter whitch part of body we hitting,
-   */
-  //! remake damage counter for bot
-  const allPartsP2 = Array.from(
-    form.querySelectorAll(`.fighters-player2 input[type="radio"]`),
-  );
+export default function (
+  field,
+  model = [],
+  view = [],
+  eventRemover = [],
+  restart,
+) {
+  let form = field.querySelector("#fighters-form");
+  let hugButton = field.querySelector(".fight-btn");
 
   const checkPlayerMoves = () => {
+    const allPartsP1 = Array.from(
+      form.querySelectorAll(`.fighters-player1 input[type="radio"]`),
+    );
+
+    /*for now damage counter is completely fake,
+     * so it does'n matter whitch part of body we hitting,
+     */
+    //! remake damage counter for bot
+    const allPartsP2 = Array.from(
+      form.querySelectorAll(`.fighters-player2 input[type="radio"]`),
+    );
+
     const partOne = allPartsP1.filter((part) => part.checked)[0]?.value;
     if (partOne) view.enableHugBtn();
   };
@@ -25,6 +31,7 @@ export default function (field, model, view) {
     model.countDamage();
     view.updateHp(model.fightState.fighters);
     hitLogger.logger(model.fightState);
+
     if (model.endGameCheck()) {
       view.prepareEndOfTheGame(field, model.gameState);
     } else view.prepareNextMove(field);
@@ -39,8 +46,8 @@ export default function (field, model, view) {
       hitLogger.cleanLogger();
       model.cleanStats();
       model.preparePveModel();
-      view.preparePveView(field, model.fightState);
-      view.prepareNextMove(field);
+      view.removeField(field);
+      return restart();
     }
   };
 
@@ -53,6 +60,12 @@ export default function (field, model, view) {
     form.removeEventListener("change", checkPlayerMoves);
     field.removeEventListener("click", handleHugButton);
   }
+
+  const startNewGame = () => {
+    runGame();
+    eventRemover.push(cleanPveListeners);
+  };
+  startNewGame();
 
   return { runGame, cleanPveListeners };
 }
