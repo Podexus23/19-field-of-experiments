@@ -95,47 +95,14 @@ const addPlayersOnField = (field, playersData) => {
     });
 };
 
-export const preparePvpView = (playersData) => {
+export const prepareView = (playersData) => {
   const field = createBattlefield();
   document.querySelector("main").append(field);
   addPlayersOnField(field, playersData);
   return field;
 };
 
-export const preparePveView = (playersData) => {
-  const field = createBattlefield();
-  document.querySelector("main").append(field);
-  addPlayersOnField(field, playersData);
-  return field;
-};
-
-export const prepareEveView = (field, state) => {
-  const announcePlace = document.querySelector(".battlefield-announcement");
-  const hugButton = field.querySelector(".fight-btn");
-  const playerOneHealth = field.querySelector(
-    ".fighters-player1 .player-health",
-  );
-  const playerTwoHealth = field.querySelector(
-    ".fighters-player2 .player-health",
-  );
-
-  playerOneHealth.querySelector(".health-is").textContent =
-    state.fighters[0].health;
-  playerOneHealth.querySelector(".health-max").textContent =
-    state.fighters[0].maxHealth;
-  playerTwoHealth.querySelector(".health-is").textContent =
-    state.fighters[1].health;
-  playerTwoHealth.querySelector(".health-max").textContent =
-    state.fighters[1].maxHealth;
-
-  field.querySelector(".p1-controls").classList.add("hidden");
-  field.querySelector(".p2-controls").classList.add("hidden");
-
-  announcePlace.textContent = `Let's Begin`;
-  hugButton.textContent = "Hug!";
-  hugButton.disabled = false;
-};
-
+// HELPERS
 export const enableHugBtn = () => {
   const button = document.querySelector(".fight-btn");
   button.disabled = false;

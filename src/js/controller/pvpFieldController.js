@@ -33,7 +33,6 @@ export default function (
   };
 
   const handleHugButton = function (e) {
-    console.log("hi event pvp");
     if (e.target === hugButton && model.gameState.stage === "ingame") {
       e.preventDefault();
       makeMoveCycle();
