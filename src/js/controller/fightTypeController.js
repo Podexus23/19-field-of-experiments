@@ -6,7 +6,7 @@ import pveController from "./pveFieldController.js";
 import eveController from "./eveFieldController.js";
 
 const asideBlock = document.querySelector(".aside");
-const battleField = document.querySelector(".battlefield");
+let battleField;
 
 const eventsToRemove = [];
 
@@ -14,9 +14,9 @@ const startPvPFight = () => {
   //clean after previous games
   baseModel.cleanStats();
   baseModel.preparePvpModel();
-  const battlefield = fieldView.prepareView(baseModel.fightState.fighters);
+  battleField = fieldView.prepareView(baseModel.fightState.fighters);
   pvpController(
-    battlefield,
+    battleField,
     baseModel,
     fieldView,
     eventsToRemove,
@@ -27,9 +27,9 @@ const startPvPFight = () => {
 const startPvEFight = () => {
   baseModel.cleanStats();
   baseModel.preparePveModel();
-  const battlefield = fieldView.prepareView(baseModel.fightState.fighters);
+  battleField = fieldView.prepareView(baseModel.fightState.fighters);
   pveController(
-    battlefield,
+    battleField,
     baseModel,
     fieldView,
     eventsToRemove,
@@ -40,9 +40,9 @@ const startPvEFight = () => {
 const startEvEFight = () => {
   baseModel.cleanStats();
   baseModel.prepareEveModel();
-  const battlefield = fieldView.prepareView(baseModel.fightState.fighters);
+  battleField = fieldView.prepareView(baseModel.fightState.fighters);
   eveController(
-    battlefield,
+    battleField,
     baseModel,
     fieldView,
     eventsToRemove,
@@ -54,7 +54,10 @@ asideBlock.addEventListener("click", (e) => {
   if (!e.target.closest(".game-type-btn")) return;
   if (e.target.classList.contains("active")) return;
 
-  if (eventsToRemove.length) eventsToRemove.forEach((remover) => remover());
+  if (eventsToRemove.length) {
+    eventsToRemove.forEach((remover) => remover());
+    fieldView.removeField(battleField);
+  }
 
   if (e.target.classList.contains("player-vs-player-btn")) {
     console.log("hi");
