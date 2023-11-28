@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 1fr 6fr;
+}

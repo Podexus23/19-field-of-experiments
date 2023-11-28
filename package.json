@@ -1,0 +1,26 @@
+{
+  "name": "19-field-of-experiments",
+  "description": "here i'm trying to use every technology and knowlege i learnt from internet",
+  "version": "1.0.0",
+  "main": "main.js",
+  "type": "module",
+  "scripts": {
+    "tailwind: watch": "npx tailwindcss -i ./src/style.css -o ./src/output.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Podexus23/19-field-of-experiments.git"
+  },
+  "author": "Podex23",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Podexus23/19-field-of-experiments/issues"
+  },
+  "homepage": "https://github.com/Podexus23/19-field-of-experiments#readme",
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "prettier": "^3.1.0",
+    "prettier-plugin-tailwindcss": "^0.5.7",
+    "tailwindcss": "^3.3.5"
+  }
+}
