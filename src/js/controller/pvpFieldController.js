@@ -25,7 +25,7 @@ export default function (
   const makeMoveCycle = () => {
     model.countDamage();
     view.updateHp(model.fightState.fighters);
-    hitLogger.logger(model.fightState);
+    // hitLogger.logger(model.fightState);
 
     if (model.endGameCheck()) {
       view.prepareEndOfTheGame(field, model.gameState);
@@ -38,7 +38,7 @@ export default function (
       makeMoveCycle();
     } else if (e.target === hugButton && model.gameState.stage === "ended") {
       e.preventDefault();
-      hitLogger.cleanLogger();
+      // hitLogger.cleanLogger();
       model.cleanStats();
       model.preparePvpModel();
       view.removeField(field);

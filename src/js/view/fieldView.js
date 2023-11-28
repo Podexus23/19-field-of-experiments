@@ -1,31 +1,25 @@
 const createBattlefield = function () {
   const battlefield = document.createElement("section");
   battlefield.classList.add("battlefield", "flex", "flex-col");
+  battlefield.className = "battlefield flex flex-col relative";
 
   const form = document.createElement("form");
-  form.classList.add("battlefield-fighters", "flex", "gap-10");
+  form.classList.add("battlefield-fighters", "flex", "gap-52");
   form.setAttribute("id", "fighters-form");
   battlefield.insertAdjacentElement("afterbegin", form);
 
   const p = document.createElement("p");
-  p.classList.add("battlefield-announcement", "text-center");
+  p.classList.add("battlefield-announcement", "text-center", "pb-5");
   p.textContent = "Let's begin";
   battlefield.insertAdjacentElement("afterbegin", p);
 
   const button = document.createElement("button");
-  button.classList.add(
-    "fight-btn",
-    "cursor-pointer",
-    "bg-blue-300",
-    "p-2",
-    "transition-colors",
-    "hover:bg-slate-600",
-    "disabled:bg-zinc-500",
-  );
+  button.className =
+    "fight-btn cursor-pointer p-5 pb-3 pt-3 bg-red-800 p-2 transition-colors  hover:bg-slate-600 disabled:bg-red-800 disabled:opacity-50 absolute top-80% left-1/2 translate-x-50%m";
   button.setAttribute("type", "submit");
   button.setAttribute("form", "fighters-form");
   button.disabled = true;
-  button.textContent = "Hug!";
+  button.textContent = "Fight";
 
   battlefield.insertAdjacentElement("beforeend", button);
 
@@ -66,9 +60,8 @@ const createPlayer = (fighterData, fighterNum) => {
         </div>`;
     })
     .join("");
-  //src="/assets/png/Player ${fighterNum}.png"
   const player = `
-    <div class="fighters-player${fighterNum} text-center">
+    <div class="fighters-player${fighterNum} text-center flex flex-col gap-3">
       <h3>${fighterData.name}</h3>
       <img
         class="player-picture h-60"
@@ -78,8 +71,9 @@ const createPlayer = (fighterData, fighterNum) => {
       <div class="p${fighterNum}-controls flex flex-col">
         ${fighterData.type === "bot" ? "" : controlElemsHTML}
       </div>
-      <p class="player-health">
-        <span class="health-is">${
+      <p class="player-health font-semibold text-2xl">
+        HP&nbsp;
+        <span class="health-is ">${
           fighterData.health
         }</span>/<span class="health-max"
           >${fighterData.maxHealth}</span>

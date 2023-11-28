@@ -23,6 +23,7 @@ const startPvPFight = () => {
     startPvPFight,
   );
 };
+startPvPFight();
 
 const startPvEFight = () => {
   baseModel.cleanStats();
