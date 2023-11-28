@@ -66,12 +66,13 @@ const createPlayer = (fighterData, fighterNum) => {
         </div>`;
     })
     .join("");
+  //src="/assets/png/Player ${fighterNum}.png"
   const player = `
     <div class="fighters-player${fighterNum} text-center">
       <h3>${fighterData.name}</h3>
       <img
         class="player-picture h-60"
-        src="/assets/png/Player ${fighterNum}.png" 
+        src="./assets/png/m-type${fighterNum}.png" 
         alt="face of insanity"
       />
       <div class="p${fighterNum}-controls flex flex-col">
