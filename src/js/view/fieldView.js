@@ -1,3 +1,5 @@
+import { bodyParts } from "../config/config.js";
+
 const createBattlefield = function () {
   const battlefield = document.createElement("section");
   battlefield.classList.add("battlefield", "flex", "flex-col");
@@ -27,22 +29,7 @@ const createBattlefield = function () {
 };
 
 const createParts = (type, num) => {
-  const bodyParts = {
-    head: {
-      name: "head",
-      value: "head",
-    },
-    torso: {
-      name: "torso",
-      value: "torso",
-    },
-    legs: {
-      name: "legs",
-      value: "legs",
-    },
-  };
-
-  const partElements = Object.keys(bodyParts)
+  const partElements = bodyParts
     .map((part) => {
       return `
       <div class="w-full transition-colors hover:bg-teal-500">
@@ -73,14 +60,16 @@ const createPlayer = (fighterData, fighterNum) => {
         src="./assets/png/m-type${fighterNum}.png" 
         alt="face of insanity"
       />
-      <div class="controls-wrapper flex gap-8">
+      <div class="controls-wrapper flex gap-8  ${
+        fighterData.type === "bot" ? "opacity-50 pointer-events-none" : ""
+      } ">
         <div class="p${fighterNum}-controls flex flex-col">
-        <p class="text-2xl font-semibold">Attack</p>
-          ${fighterData.type === "bot" ? "" : createParts("atk", fighterNum)}
+          <p class="text-2xl font-semibold">Attack</p>
+          ${createParts("atk", fighterNum)}
         </div>
-        <div class="p${fighterNum}-controls flex flex-col">
-        <p class="text-2xl font-semibold">Defence</p>
-          ${fighterData.type === "bot" ? "" : createParts("def", fighterNum)}
+        <div class="p${fighterNum}-controls flex flex-col ">
+          <p class="text-2xl font-semibold">Defense</p>
+          ${createParts("def", fighterNum)}
         </div>
       </div>
       <p class="player-health font-semibold text-2xl">

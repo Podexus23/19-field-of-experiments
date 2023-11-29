@@ -23,8 +23,8 @@ export default function (
       form.querySelectorAll(`.fighters-player2 input[type="radio"]`),
     );
 
-    const partOne = allPartsP1.filter((part) => part.checked)[0]?.value;
-    if (partOne) view.enableHugBtn();
+    const partOne = allPartsP1.filter((part) => part.checked);
+    if (partOne.length === 2) view.enableHugBtn();
   };
 
   const makeMoveCycle = () => {

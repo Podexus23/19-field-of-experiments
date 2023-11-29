@@ -106,6 +106,7 @@ export const addDamageToPlayers = () => {
     ? p2Hit * 0.5
     : p2Hit;
 
+  console.log(fightState);
   fightState.fighters[0].health -= p2Hit;
   fightState.fighters[1].health -= p1Hit;
   fightState.fighters[0].lastTakenDamage = p2Hit;

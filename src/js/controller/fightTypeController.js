@@ -23,7 +23,6 @@ const startPvPFight = () => {
     startPvPFight,
   );
 };
-startPvPFight();
 
 const startPvEFight = () => {
   baseModel.cleanStats();
@@ -37,6 +36,7 @@ const startPvEFight = () => {
     startPvEFight,
   );
 };
+startPvEFight();
 
 const startEvEFight = () => {
   baseModel.cleanStats();
