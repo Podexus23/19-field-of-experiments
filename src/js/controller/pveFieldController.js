@@ -28,7 +28,7 @@ export default function (
   };
 
   const makeMoveCycle = () => {
-    model.countDamage();
+    model.addDamageToPlayers();
     view.updateHp(model.fightState.fighters);
     hitLogger.logger(model.fightState);
 

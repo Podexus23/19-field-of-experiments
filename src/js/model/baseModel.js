@@ -4,6 +4,7 @@ const createNewFighter = function (type, name = "fighter", stats) {
   return {
     name,
     type,
+    moves: { attack: "", defense: "" },
     maxHealth: config.playerBaseStats.healthPoints,
     health: config.playerBaseStats.healthPoints,
   };
@@ -24,6 +25,7 @@ const hitForceCount = (min, max, modifier = 1) => {
   const base = min + Math.random() * (max - min) * modifier;
   return Math.ceil(base);
 };
+
 //simulate bot's chose for move by giving index of input
 export const moveSimulation = (min, max) => {
   return Math.floor(min + Math.random() * (max - min));
@@ -31,6 +33,13 @@ export const moveSimulation = (min, max) => {
 
 export const fightState = {
   fighters: [],
+};
+
+export const markPlayersMoves = (p1Moves, p2Moves) => {
+  fightState.fighters[0].moves.attack = p1Moves[0].value.split("-")[0];
+  fightState.fighters[0].moves.defense = p1Moves[1].value.split("-")[0];
+  fightState.fighters[1].moves.attack = p2Moves[0].value.split("-")[0];
+  fightState.fighters[1].moves.defense = p2Moves[1].value.split("-")[0];
 };
 
 export const endGameCheck = () => {
@@ -76,9 +85,26 @@ export const prepareEveModel = () => {
   fightState.fighters.push(createNewFighter("bot", "Bot 2"));
 };
 
-export const countDamage = () => {
-  const p1Hit = +hitForceCount(...gameState.hitCoefficients);
-  const p2Hit = +hitForceCount(...gameState.hitCoefficients);
+const checkBlocked = (move1, move2) => {
+  if (move1 === move2) return true;
+  return false;
+};
+
+export const addDamageToPlayers = () => {
+  let p1Hit = +hitForceCount(...gameState.hitCoefficients);
+  p1Hit = checkBlocked(
+    fightState.fighters[0].moves.attack,
+    fightState.fighters[1].moves.defense,
+  )
+    ? p1Hit * 0.5
+    : p1Hit;
+  let p2Hit = +hitForceCount(...gameState.hitCoefficients);
+  p2Hit = checkBlocked(
+    fightState.fighters[1].moves.attack,
+    fightState.fighters[0].moves.defense,
+  )
+    ? p2Hit * 0.5
+    : p2Hit;
 
   fightState.fighters[0].health -= p2Hit;
   fightState.fighters[1].health -= p1Hit;

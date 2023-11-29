@@ -9,6 +9,7 @@ export default function (
 ) {
   let form = field.querySelector("#fighters-form");
   let hugButton = field.querySelector(".fight-btn");
+  let firstPlayerMoves, secondPlayerMoves;
 
   const checkPlayerMoves = () => {
     const allPartsP1 = Array.from(
@@ -17,13 +18,19 @@ export default function (
     const allPartsP2 = Array.from(
       form.querySelectorAll(`.fighters-player2 input[type="radio"]`),
     );
-    const partOne = allPartsP1.filter((part) => part.checked)[0]?.value;
-    const partTwo = allPartsP2.filter((part) => part.checked)[0]?.value;
-    if (partOne && partTwo) view.enableHugBtn();
+    // attack and defense to move 2 checks
+    const partOne = allPartsP1.filter((part) => part.checked);
+    const partTwo = allPartsP2.filter((part) => part.checked);
+    if (partOne.length === 2 && partTwo.length === 2) {
+      firstPlayerMoves = partOne;
+      secondPlayerMoves = partTwo;
+      view.enableHugBtn();
+    }
   };
 
   const makeMoveCycle = () => {
-    model.countDamage();
+    model.markPlayersMoves(firstPlayerMoves, secondPlayerMoves);
+    model.addDamageToPlayers();
     view.updateHp(model.fightState.fighters);
     // hitLogger.logger(model.fightState);
 
