@@ -1,3 +1,4 @@
+import { timers } from "../config/config.js";
 import * as hitLogger from "../view/loggerView.js";
 
 export default function (
@@ -9,42 +10,65 @@ export default function (
 ) {
   const form = field.querySelector("#fighters-form");
   const hugButton = field.querySelector(".fight-btn");
+  let firstPlayerMoves, secondPlayerMoves;
 
   //for da future
   const checkPlayerMoves = () => {
-    const allPartsP1 = Array.from(
+    firstPlayerMoves = Array.from(
       form.querySelectorAll(`.fighters-player1 input[type="radio"]`),
     );
-    const allPartsP2 = Array.from(
+    secondPlayerMoves = Array.from(
       form.querySelectorAll(`.fighters-player2 input[type="radio"]`),
     );
-    const partOne = allPartsP1.filter((part) => part.checked)[0]?.value;
-    const partTwo = allPartsP2.filter((part) => part.checked)[0]?.value;
-    if (partOne && partTwo) view.enableHugBtn();
+    return [firstPlayerMoves, secondPlayerMoves];
+  };
+
+  const createBotMoves = (botMoves) => {
+    const attack = botMoves.filter((move) => move.value.includes("atk"));
+    const defense = botMoves.filter((move) => move.value.includes("def"));
+    const baseAtk = Math.floor(Math.random() * attack.length);
+    const baseDef = Math.floor(Math.random() * defense.length);
+    console.log(baseAtk, baseDef);
+    setTimeout(() => {
+      view.activateMove(attack[baseAtk]);
+    }, 0);
+    setTimeout(() => {
+      view.activateMove(defense[baseDef]);
+    }, timers.moveTimer * 3);
   };
 
   const makeMoveCycle = () => {
-    model.addDamageToPlayers();
-    view.updateHp(model.fightState.fighters);
-    hitLogger.logger(model.fightState);
+    const [p1Moves, p2Moves] = checkPlayerMoves();
+    createBotMoves(p1Moves);
+    createBotMoves(p2Moves);
 
-    if (model.endGameCheck()) {
-      view.prepareEndOfTheGame(field, model.gameState);
-    }
+    setTimeout(() => {
+      firstPlayerMoves = firstPlayerMoves.filter((part) => part.checked);
+      secondPlayerMoves = secondPlayerMoves.filter((part) => part.checked);
+      model.markPlayersMoves(firstPlayerMoves, secondPlayerMoves);
+      model.addDamageToPlayers();
+      view.updateHp(model.fightState.fighters);
+      if (model.endGameCheck()) {
+        view.prepareEndOfTheGame(field, model.gameState);
+      }
+    }, timers.moveTimer * 5);
   };
 
   const handleHugButton = function (e) {
     let intervalId;
     if (e.target === hugButton && model.gameState.stage === "ingame") {
       e.preventDefault();
+      //fck mess
       intervalId = setInterval(() => {
+        if (model.endGameCheck()) {
+          clearInterval(intervalId);
+          return;
+        }
         makeMoveCycle();
-        if (model.endGameCheck()) clearInterval(intervalId);
-      }, 2000);
+      }, timers.endRoundTimer);
     } else if (e.target === hugButton && model.gameState.stage === "ended") {
       e.preventDefault();
-
-      hitLogger.cleanLogger();
+      // hitLogger.cleanLogger();
       model.cleanStats();
       model.prepareEveModel();
       view.removeField(field);

@@ -36,7 +36,6 @@ const startPvEFight = () => {
     startPvEFight,
   );
 };
-startPvEFight();
 
 const startEvEFight = () => {
   baseModel.cleanStats();
@@ -50,6 +49,7 @@ const startEvEFight = () => {
     startEvEFight,
   );
 };
+startEvEFight();
 
 asideBlock.addEventListener("click", (e) => {
   if (!e.target.closest(".game-type-btn")) return;
