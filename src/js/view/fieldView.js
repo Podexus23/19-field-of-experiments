@@ -143,3 +143,7 @@ export const prepareEndOfTheGame = (field, state) => {
 export const removeField = (field) => {
   document.querySelector("main").removeChild(field);
 };
+
+export const activateMove = (moveButton) => {
+  moveButton.checked = true;
+};

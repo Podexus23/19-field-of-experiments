@@ -61,7 +61,6 @@ asideBlock.addEventListener("click", (e) => {
   }
 
   if (e.target.classList.contains("player-vs-player-btn")) {
-    console.log("hi");
     asideView.makeActiveBtn(e.target);
     startPvPFight();
   }

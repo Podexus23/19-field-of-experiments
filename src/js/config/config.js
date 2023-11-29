@@ -35,3 +35,8 @@ const bodyPartsObj = {
     value: "legs",
   },
 };
+
+export const timers = {
+  moveTimer: 300,
+  endRoundTimer: 2000,
+};
