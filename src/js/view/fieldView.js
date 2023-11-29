@@ -26,7 +26,7 @@ const createBattlefield = function () {
   return battlefield;
 };
 
-const createPlayer = (fighterData, fighterNum) => {
+const createParts = (type, num) => {
   const bodyParts = {
     head: {
       name: "head",
@@ -41,35 +41,47 @@ const createPlayer = (fighterData, fighterNum) => {
       value: "legs",
     },
   };
-  const controlElemsHTML = Object.keys(bodyParts)
+
+  const partElements = Object.keys(bodyParts)
     .map((part) => {
       return `
-        <div class="w-full transition-colors hover:bg-teal-500">
-          <input
-            type="radio"
-            class="peer ml-2 hidden"
-            name="player-${fighterNum}"
-            id="${part}-${fighterNum}"
-            value="${part}"
-          />
-          <label
-            class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
-            for="${part}-${fighterNum}"
-            >${part}</label
-          >
-        </div>`;
+      <div class="w-full transition-colors hover:bg-teal-500">
+        <input
+          type="radio"
+          class="peer ml-2 hidden"
+          name="player-${num}-${type}"
+          id="${part}-${num}-${type}"
+          value="${part}-${type}"
+        />
+        <label
+          class="inline-block w-full cursor-pointer transition-colors peer-checked:bg-red-500"
+          for="${part}-${num}-${type}"
+          >${part}</label
+        >
+      </div>`;
     })
     .join("");
+  return partElements;
+};
+
+const createPlayer = (fighterData, fighterNum) => {
   const player = `
-    <div class="fighters-player${fighterNum} text-center flex flex-col gap-3">
+    <div class="fighters-player${fighterNum} text-center flex flex-col gap-3 items-center">
       <h3>${fighterData.name}</h3>
       <img
-        class="player-picture h-60"
+        class="player-picture h-60 max-w-8r"
         src="./assets/png/m-type${fighterNum}.png" 
         alt="face of insanity"
       />
-      <div class="p${fighterNum}-controls flex flex-col">
-        ${fighterData.type === "bot" ? "" : controlElemsHTML}
+      <div class="controls-wrapper flex gap-8">
+        <div class="p${fighterNum}-controls flex flex-col">
+        <p class="text-2xl font-semibold">Attack</p>
+          ${fighterData.type === "bot" ? "" : createParts("atk", fighterNum)}
+        </div>
+        <div class="p${fighterNum}-controls flex flex-col">
+        <p class="text-2xl font-semibold">Defence</p>
+          ${fighterData.type === "bot" ? "" : createParts("def", fighterNum)}
+        </div>
       </div>
       <p class="player-health font-semibold text-2xl">
         HP&nbsp;

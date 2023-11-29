@@ -8,6 +8,9 @@ module.exports = {
         "80%": "80%",
         "50%m": "-50%",
       },
+      maxWidth: {
+        "8r": "8rem",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],
