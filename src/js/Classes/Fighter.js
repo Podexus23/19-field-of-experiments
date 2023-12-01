@@ -23,6 +23,7 @@ export class Fighter {
   takeDamage(bodyPart, damage) {
     //i don't like how it looks like but meh
     this.hp -= bodyPart === this.moves.defense ? damage * 0.5 : damage;
+    /* commit for flex, spend all free time on RS task */
   }
 
   get hp() {
