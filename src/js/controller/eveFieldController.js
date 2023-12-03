@@ -12,7 +12,6 @@ export default function (
   const hugButton = field.querySelector(".fight-btn");
   let firstPlayerMoves, secondPlayerMoves;
 
-  //for da future
   const checkPlayerMoves = () => {
     firstPlayerMoves = Array.from(
       form.querySelectorAll(`.fighters-player1 input[type="radio"]`),
@@ -24,16 +23,15 @@ export default function (
   };
 
   const createBotMoves = (botMoves) => {
-    const attack = botMoves.filter((move) => move.value.includes("atk"));
-    const defense = botMoves.filter((move) => move.value.includes("def"));
-    const baseAtk = Math.floor(Math.random() * attack.length);
-    const baseDef = Math.floor(Math.random() * defense.length);
-    console.log(baseAtk, baseDef);
+    const attackParts = botMoves.filter((move) => move.value.includes("atk"));
+    const defenseParts = botMoves.filter((move) => move.value.includes("def"));
+    const chosenAtkPart = Math.floor(Math.random() * attackParts.length);
+    const chosenDefPart = Math.floor(Math.random() * defenseParts.length);
     setTimeout(() => {
-      view.activateMove(attack[baseAtk]);
+      view.activateMove(attackParts[chosenAtkPart]);
     }, 0);
     setTimeout(() => {
-      view.activateMove(defense[baseDef]);
+      view.activateMove(defenseParts[chosenDefPart]);
     }, timers.moveTimer * 3);
   };
 

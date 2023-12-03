@@ -75,9 +75,9 @@ const createPlayer = (fighterData, fighterNum) => {
       <p class="player-health font-semibold text-2xl">
         HP&nbsp;
         <span class="health-is ">${
-          fighterData.health
+          fighterData.hp
         }</span>/<span class="health-max"
-          >${fighterData.maxHealth}</span>
+          >${fighterData.baseHp}</span>
       </p>
     </div>`;
   return player;
@@ -111,9 +111,9 @@ export const disableHugBtn = () => {
 
 export const updateHp = (fighters) => {
   document.querySelector(".fighters-player1 .health-is").textContent =
-    fighters[0].health;
+    fighters[0].hp;
   document.querySelector(".fighters-player2 .health-is").textContent =
-    fighters[1].health;
+    fighters[1].hp;
 };
 
 export const prepareNextMove = (field) => {

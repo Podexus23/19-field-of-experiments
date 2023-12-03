@@ -13,7 +13,7 @@ const eventsToRemove = [];
 const startPvPFight = () => {
   //clean after previous games
   baseModel.cleanStats();
-  baseModel.preparePvpModel();
+  baseModel.prepareModel("pvp");
   battleField = fieldView.prepareView(baseModel.fightState.fighters);
   pvpController(
     battleField,
@@ -23,10 +23,11 @@ const startPvPFight = () => {
     startPvPFight,
   );
 };
+// startPvPFight();
 
 const startPvEFight = () => {
   baseModel.cleanStats();
-  baseModel.preparePveModel();
+  baseModel.prepareModel("pve");
   battleField = fieldView.prepareView(baseModel.fightState.fighters);
   pveController(
     battleField,
@@ -39,7 +40,7 @@ const startPvEFight = () => {
 
 const startEvEFight = () => {
   baseModel.cleanStats();
-  baseModel.prepareEveModel();
+  baseModel.prepareModel("eve");
   battleField = fieldView.prepareView(baseModel.fightState.fighters);
   eveController(
     battleField,
@@ -49,7 +50,6 @@ const startEvEFight = () => {
     startEvEFight,
   );
 };
-startEvEFight();
 
 asideBlock.addEventListener("click", (e) => {
   if (!e.target.closest(".game-type-btn")) return;
