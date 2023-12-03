@@ -50,16 +50,25 @@ const createParts = (type, num) => {
     .join("");
   return partElements;
 };
+/*
+<img
+    class="player-picture h-60 max-w-8r"
+    src="./assets/png/m-type${fighterNum}.svg"
+    alt="face of insanity"
+ />
+*/
 
 const createPlayer = (fighterData, fighterNum) => {
   const player = `
     <div class="fighters-player${fighterNum} text-center flex flex-col gap-3 items-center">
       <h3>${fighterData.name}</h3>
-      <img
-        class="player-picture h-60 max-w-8r"
-        src="./assets/png/m-type${fighterNum}.png" 
-        alt="face of insanity"
-      />
+      <picture class="${
+        fighterNum === 1 ? "[transform:rotateY(180deg)]" : "rotate-0"
+      }">
+        <svg width="70" height="150" style="fill:${"#fff"}; stroke:${"#000"}">
+          <use xlink:href="../src/assets/png/puppetSprite.svg#puppet"></use>
+        </svg>
+      </picture>
       <div class="controls-wrapper flex gap-8  ${
         fighterData.type === "bot" ? "opacity-50 pointer-events-none" : ""
       } ">

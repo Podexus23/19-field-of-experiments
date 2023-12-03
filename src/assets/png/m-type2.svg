@@ -1,0 +1,10 @@
+<svg id="puppet" width="70" height="150" viewBox="0 0 70 150" stroke="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <rect x="16.5" y="1.5" width="36" height="38" />
+  <rect x="11.5" y="39.5" width="48" height="47" />
+  <rect x="4.5" y="39.5" width="7" height="33" />
+  <rect x="59.5" y="39.5" width="7" height="33" />
+  <rect x="44.5" y="86.5" width="15" height="58" />
+  <rect x="11.5" y="86.5" width="15" height="58" />
+  <rect x="25" y="15" width="3" height="3" />
+  <rect x="36" y="15" width="3" height="3" />
+</svg>

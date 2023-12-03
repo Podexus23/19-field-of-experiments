@@ -43,28 +43,6 @@ export const endGameCheck = () => {
   return false;
 };
 
-// export const preparePvpModel = () => {
-//   gameState.type = "pvp";
-//   gameState.stage = "ingame";
-//   fightState.fighters.push(new Fighter("fighter 1", "player"));
-//   fightState.fighters.push(new Fighter("fighter 2", "player"));
-// };
-
-// export const preparePveModel = () => {
-//   gameState.type = "pve";
-//   gameState.stage = "ingame";
-//   fightState.fighters.push(new Fighter("fighter 1", "player"));
-//   fightState.fighters.push(new Fighter("Bot 1", "bot"));
-//   console.log(fightState);
-// };
-
-// export const prepareEveModel = () => {
-//   gameState.type = "eve";
-//   gameState.stage = "ingame";
-//   fightState.fighters.push(new Fighter("Bot 1", "bot"));
-//   fightState.fighters.push(new Fighter("Bot 2", "bot"));
-// };
-
 export const prepareModel = (type) => {
   gameState.type = type;
   gameState.stage = "ingame";
