@@ -1,4 +1,8 @@
 export const playerBaseStats = {
+  statPoints: 20,
+  minStatPerSkill: 5,
+  maxStatPerSkill: 15,
+
   healthPoints: 100,
   get minHit() {
     return this.healthPoints * 0.5;
@@ -9,17 +13,6 @@ export const playerBaseStats = {
 };
 
 export const bodyParts = ["head", "torso", "legs"];
-//may be for later purpose, later we see
-
-// export const playerBaseStats = {
-//   healthPoints: 100,
-//   get minHit() {
-//     return this.healthPoints * 0.2;
-//   },
-//   get maxHit() {
-//     return this.healthPoints * 0.7;
-//   },
-// };
 
 const bodyPartsObj = {
   head: {
@@ -37,6 +30,6 @@ const bodyPartsObj = {
 };
 
 export const timers = {
-  moveTimer: 300,
-  endRoundTimer: 2000,
+  moveTimer: 400,
+  endRoundTimer: 3000,
 };

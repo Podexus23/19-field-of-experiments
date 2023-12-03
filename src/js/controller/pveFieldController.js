@@ -71,7 +71,7 @@ export default function (
       e.preventDefault();
       // hitLogger.cleanLogger();
       model.cleanStats();
-      model.preparePveModel();
+      model.prepareModel("pve");
       view.removeField(field);
       return restart();
     }

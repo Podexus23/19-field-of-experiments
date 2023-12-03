@@ -68,7 +68,7 @@ export default function (
       e.preventDefault();
       // hitLogger.cleanLogger();
       model.cleanStats();
-      model.prepareEveModel();
+      model.prepareModel("eve");
       view.removeField(field);
       return restart();
     }

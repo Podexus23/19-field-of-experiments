@@ -47,7 +47,7 @@ export default function (
       e.preventDefault();
       // hitLogger.cleanLogger();
       model.cleanStats();
-      model.preparePvpModel();
+      model.prepareModel("pvp");
       view.removeField(field);
       return restart();
     }
