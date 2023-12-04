@@ -757,6 +757,10 @@ select {
   top: 80%;
 }
 
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
 }
@@ -816,11 +820,6 @@ select {
 
 .rotate-0 {
   --tw-rotate: 0deg;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.rotate-180 {
-  --tw-rotate: 180deg;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -1007,10 +1006,6 @@ select {
   transition-duration: 150ms;
 }
 
-.\[transform\:rotateY\(45deg\)\] {
-  transform: rotateY(45deg);
-}
-
 .\[transform\:rotateY\(180deg\)\] {
   transform: rotateY(180deg);
 }
@@ -1019,6 +1014,7 @@ body {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 6fr;
+  grid-template-rows: 5rem 1fr;
 }
 
 .hover\:border-fuchsia-700:hover {

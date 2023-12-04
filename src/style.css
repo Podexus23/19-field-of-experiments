@@ -6,4 +6,5 @@ body {
   display: grid;
   height: 100vh;
   grid-template-columns: 1fr 6fr;
+  grid-template-rows: 5rem 1fr;
 }
